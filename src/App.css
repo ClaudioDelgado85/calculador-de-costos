@@ -1,166 +1,205 @@
-#root {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Base styles with soft colors and minimalist design */
+:root {
+    --primary-color: #6b9ac4;
+    --secondary-color: #f2f7fa;
+    --text-color: #2c3e50;
+    --border-color: #d1e2f0;
+    --shadow-color: rgba(107, 154, 196, 0.1);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
 }
 
 .calculator-container {
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
-  text-align: left;
+    margin-bottom: 1.5rem;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: #333;
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
 }
 
-.form-group input {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1rem;
-  transition: border-color 0.3s;
+input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
 }
 
-.form-group input:focus {
-  outline: none;
-  border-color: #646cff;
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
 }
 
 .button-group {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin: 2rem 0;
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
 }
 
 button {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s;
+    flex: 1;
+    min-width: 120px;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
 }
 
 .calculate-btn {
-  background-color: #646cff;
-  color: white;
-}
-
-.calculate-btn:hover {
-  background-color: #535bf2;
+    background-color: var(--primary-color);
+    color: white;
 }
 
 .add-btn {
-  background-color: #4caf50;
-  color: white;
-}
-
-.add-btn:hover {
-  background-color: #45a049;
-}
-
-.results {
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin-top: 2rem;
-}
-
-.pdf-content {
-  margin-top: 2rem;
-  padding: 2rem;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.product-list {
-  margin-top: 1.5rem;
-}
-
-.product-item {
-  padding: 0.5rem;
-  margin: 0.5rem 0;
-  background-color: #f8f9fa;
-  border-radius: 4px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    background-color: #82c3a6;
+    color: white;
 }
 
 .pdf-btn {
-  background-color: #dc3545;
-  color: white;
+    background-color: #c48a6b;
+    color: white;
 }
 
-.pdf-btn:hover {
-  background-color: #c82333;
-}
-/* Remove extra closing brace as it has no matching opening brace */
-
-@media (max-width: 600px) {
-  #root {
-    padding: 1rem;
-  }
-
-  .calculator-container {
-    padding: 1rem;
-  }
-
-  .button-group {
-    flex-direction: column;
-  }
-
-  button {
-    width: 100%;
-  }
-}
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.pdf-content {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: var(--secondary-color);
+    border-radius: 8px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.results, .product-list {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px var(--shadow-color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+h2, h3 {
+    color: var(--primary-color);
+    margin-top: 0;
 }
 
-.card {
-  padding: 2em;
+/* Responsive styles for mobile devices */
+@media screen and (max-width: 600px) {
+    .calculator-container {
+        margin: 0;
+        padding: 1rem;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    button {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .results, .product-list {
+        padding: 1rem;
+    }
+
+    input {
+        padding: 0.6rem;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
 }
 
-.read-the-docs {
-  color: #888;
+/* Additional responsive adjustments for very small screens */
+@media screen and (max-width: 320px) {
+    .calculator-container {
+        padding: 0.8rem;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    .form-group {
+        margin-bottom: 0.8rem;
+    }
+
+    input {
+        padding: 0.5rem;
+    }
+}
+.product-list {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+}
+
+.product-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+
+.product-item span {
+    font-size: 16px;
+}
+
+.pdf-content {
+    padding: 20px;
+    margin-top: 20px;
+    background-color: white;
+}
+
+.results, .product-list {
+    margin-bottom: 20px;
+}
+
+#productListContainer {
+    margin-top: 10px;
 }

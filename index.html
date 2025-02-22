@@ -1,13 +1,101 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Costos de Producto</title>
+    <link rel="stylesheet" href="src/App.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div class="calculator-container">
+            <h1>Calculadora de Costos de Producto</h1>
+            
+            <div class="form-group">
+                <label>Nombre del Producto:</label>
+                <input
+                    type="text"
+                    name="productName"
+                    id="productName"
+                    placeholder="Ingrese nombre del producto"
+                />
+            </div>
+
+            <div class="form-group">
+                <label>Costo de Envío (I1):</label>
+                <input
+                    type="number"
+                    name="shippingCost"
+                    id="shippingCost"
+                    placeholder="Ingrese costo de envío"
+                />
+            </div>
+
+            <div class="form-group">
+                <label>Número de Curvas (C1):</label>
+                <input
+                    type="number"
+                    name="curves"
+                    id="curves"
+                    placeholder="Ingrese número de curvas"
+                />
+            </div>
+
+            <div class="form-group">
+                <label>Unidades por Curva:</label>
+                <input
+                    type="number"
+                    name="unitsPerCurve"
+                    id="unitsPerCurve"
+                    placeholder="Ingrese unidades por curva"
+                />
+            </div>
+
+            <div class="form-group">
+                <label>Costo de Compra:</label>
+                <input
+                    type="number"
+                    name="purchaseCost"
+                    id="purchaseCost"
+                    placeholder="Ingrese costo de compra"
+                />
+            </div>
+
+            <div class="form-group">
+                <label>Ganancia Estimada (multiplicador):</label>
+                <input
+                    type="number"
+                    name="estimatedProfit"
+                    id="estimatedProfit"
+                    placeholder="Ingrese multiplicador de ganancia"
+                />
+            </div>
+
+            <div class="button-group">
+                <button id="calculateBtn" class="calculate-btn">Calcular</button>
+                <button id="addBtn" class="add-btn">Agregar</button>
+                <button id="pdfBtn" class="pdf-btn">Generar PDF</button>
+            </div>
+
+            <div id="pdfContent" class="pdf-content">
+                <h2>Resumen de Productos</h2>
+                <div class="results">
+                    <h3>Último Cálculo</h3>
+                    <p><strong>Producto:</strong> <span id="resultProductName"></span></p>
+                    <p><strong>Costo de Envío por Producto:</strong> $<span id="resultShippingCost">0.00</span></p>
+                    <p><strong>Costo Total:</strong> $<span id="resultTotalCost">0.00</span></p>
+                    <p><strong>Costo por Unidad:</strong> $<span id="resultCostPerUnit">0.00</span></p>
+                    <p><strong>Precio de Venta:</strong> $<span id="resultSellingPrice">0.00</span></p>
+                </div>
+
+                <div class="product-list">
+                    <h3>Lista de Productos</h3>
+                    <div id="productListContainer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="src/main.js"></script>
+</body>
 </html>
