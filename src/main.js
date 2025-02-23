@@ -105,6 +105,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const element = document.getElementById('pdfContent');
+        
+        // Create a new table specifically for PDF
+        const pdfTable = document.createElement('div');
+        pdfTable.style.width = '100%';
+        pdfTable.style.marginTop = '20px';
+        
+        // Add table header
+        const tableHTML = `
+            
+            <h3>Lista de Productos</h3>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                <thead>
+                    <tr style="background-color: #f2f7fa;">
+                        <th style="padding: 12px; text-align: left; border-bottom: 2px solid #d1e2f0;">Nombre del Producto</th>
+                        <th style="padding: 12px; text-align: right; border-bottom: 2px solid #d1e2f0;">Precio de Venta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${productList.map(product => `
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #d1e2f0;">${product.name}</td>
+                            <td style="padding: 10px; text-align: right; border-bottom: 1px solid #d1e2f0;">$${product.price.toFixed(2)}</td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        `;
+        
+        pdfTable.innerHTML = tableHTML;
+        element.appendChild(pdfTable);
+
         const opt = {
             margin: 1,
             filename: 'lista-productos.pdf',
@@ -113,8 +144,8 @@ document.addEventListener('DOMContentLoaded', () => {
             jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
         };
 
-        // Ensure styles are applied before generating PDF
-        const styles = window.getComputedStyle(element);
+        // Apply styles for PDF generation
+        const originalStyle = element.style.cssText;
         element.style.backgroundColor = 'white';
         element.style.padding = '20px';
 
@@ -124,8 +155,9 @@ document.addEventListener('DOMContentLoaded', () => {
             .save()
             .then(() => {
                 // Reset styles after PDF generation
-                element.style.backgroundColor = styles.backgroundColor;
-                element.style.padding = styles.padding;
+                element.style.cssText = originalStyle;
+                // Remove the temporary table
+                element.removeChild(pdfTable);
             });
     };
 
