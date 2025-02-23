@@ -113,7 +113,14 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Add table header
         const tableHTML = `
-            
+            <div class="results">
+                <h3>Último Cálculo</h3>
+                <p><strong>Producto:</strong> ${document.getElementById('resultProductName').textContent}</p>
+                <p><strong>Costo de Envío por Producto:</strong> $${document.getElementById('resultShippingCost').textContent}</p>
+                <p><strong>Costo Total:</strong> $${document.getElementById('resultTotalCost').textContent}</p>
+                <p><strong>Costo por Unidad:</strong> $${document.getElementById('resultCostPerUnit').textContent}</p>
+                <p><strong>Precio de Venta:</strong> $${document.getElementById('resultSellingPrice').textContent}</p>
+            </div>
             <h3>Lista de Productos</h3>
             <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
                 <thead>
